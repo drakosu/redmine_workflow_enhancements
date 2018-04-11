@@ -1,7 +1,7 @@
 require_dependency 'tracker'
 
 class Tracker
-  has_many :tracker_statuses
+  has_many :tracker_statuses, dependent: :destroy
   has_many :predef_issue_statuses, :through => :tracker_statuses
 
   def issue_statuses_with_workflow_enhancements
