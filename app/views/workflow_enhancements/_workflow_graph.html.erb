@@ -55,7 +55,7 @@
 
   <script type="text/javascript">
   $(function() {
-    var json = <%= WorkflowEnhancements::Graph.load_data(roles, trackers, issue, project_role_ids, @project && @project.workspace_id ? @project.workspace_id : params[:workspace_id]).to_json.html_safe %>;
+    var json = <%= WorkflowEnhancements::Graph.load_data(roles, trackers, issue, project_role_ids, @project && @project.respond_to?(:workspace_id) ? @project.workspace_id : params[:workspace_id]).to_json.html_safe %>;
 
     var renderer = new dagreD3.Renderer();
     var oldDrawNodes = renderer.drawNodes();
