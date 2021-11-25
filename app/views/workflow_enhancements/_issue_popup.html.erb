@@ -11,7 +11,8 @@
               'style="padding-left:16px;margin-left:4px;cursor:pointer;"></span>');
   }
 
-  $('<span class="icon icon-help" onclick="show_workflow(\'<%= workflow_show_graph_path(@project.id, @issue.tracker.id, @issue.id || 0) %>\')" ' +
+  <% tracker_text = @issue.safe_attribute?('tracker_id') ? "'+document.getElementById('issue_tracker_id').value+'" : @issue.tracker.id %>
+  $('<span class="icon icon-help" onclick="show_workflow(\'<%= workflow_show_graph_path(@project.id, tracker_text, @issue.id || 0) %>\')" ' +
     'style="padding-left:16px;margin-left:4px;cursor:pointer;"></span>')
     .insertAfter('#issue_status_id');
 
