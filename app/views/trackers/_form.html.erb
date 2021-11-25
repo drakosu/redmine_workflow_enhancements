@@ -8,12 +8,12 @@
   <fieldset class="box" id="predef-statuses">
     <legend><%= l(:label_issue_status_plural) %></legend>
 
-    <% IssueStatus.order(:name).each do |status| %>
+    <% IssueStatus.order(:position).each do |status| %>
       <label>
         <%= check_box_tag "tracker[predef_issue_status_ids][]", status.id,
             @tracker.predef_issue_statuses.include?(status), :id => nil %>
         <%= status.name %>
-      </label>
+      </label><br>
     <% end %>
   </fieldset>
 </div>
