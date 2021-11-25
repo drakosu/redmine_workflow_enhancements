@@ -1,4 +1,4 @@
-class CreateTrackerStatuses < ActiveRecord::Migration[5.1]
+class CreateTrackerStatuses < ActiveRecord::Migration
   def change
     create_table :tracker_statuses do |t|
       t.integer :tracker_id,      :null => false
