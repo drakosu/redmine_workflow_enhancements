@@ -23,7 +23,9 @@ module WorkflowEnhancements::Graph
 
     new_issue_status_map = {}
     edges_map = {}
-    WorkflowTransition.where(:tracker_id => tracker, :workspace_id => workspace_id).each do |t|
+    option = {:tracker_id => tracker}
+    option[:workspace_id] = workspace_id if workspace_id
+    WorkflowTransition.where(option).each do |t|
       next unless project_roles.nil? || project_roles.include?(t.role_id)
       if t.old_status_id != 0
         key = t.old_status_id.to_s + '-' + t.new_status_id.to_s
